@@ -11,7 +11,7 @@
     flex-direction: column;
     border: 2px solid black;
 }
-#keypad, #numBox, #operatorBox, #submit{
+#keypad, #numBox, #operatorBox, #submit, #bottom{
     display: flex;
     width: 100%;
     height: auto;
@@ -36,7 +36,7 @@
     width: 75%
 
 }
-.nums, .operators, #submit{
+.nums, .operators, #submit, #clear{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -57,8 +57,19 @@
     width: 100%;
     background-color: rgb(53, 188, 188);
 }
-#submit{
+#bottom{
     height: 16.6667%;
-    width: 100%;
+}
+#submit, #clear{
+    height: 100%;
+}
+#submit{
+    font-size: 115px;
+    width: 60%;
     background-color: rgb(47, 172, 47);
+}
+#clear{
+    font-size: 100px;
+    width: 40%;
+    background-color: rgb(255, 102, 0);
 }
