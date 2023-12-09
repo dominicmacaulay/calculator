@@ -1,6 +1,7 @@
 let num1;
 let num2;
 let operator; // operator value definitions = add: 1, subtract: 2, multiply: 3, divide: 4
+let interim;
 let solution;
 const text = document.querySelector('#screen');
 
@@ -12,13 +13,13 @@ clear();
 function operatorCall(value){
     if(!operator == null){
         if(operator == 1){
-            // call add function
+            add();
         } else if(operator == 2){
-            // call subtract function
+            subtract();
         } else if(operator == 3){
-            // call multiply function
+            multiply();
         } else if(operator == 4){
-            // call divide function
+            divide();
         }
     }
     operator = value;
@@ -28,6 +29,7 @@ function operatorCall(value){
 // replace it with button value. If not, then replace let num2
 // with button value.
 function buttonPress(value){
+    text.textContent = value;
     if(num1 == null){
         num1 = value;
     } else{
@@ -35,41 +37,43 @@ function buttonPress(value){
     }
 }
 
-// called by solution button: display value of solution in the screen
-// text and then sets all variables to null
+// called by solution button: rounds interim and places value into
+// solution. Displays solution in the screen and calls the clear
+// function to reset variables
 function solutionButton(){
+    solution = Math.round((interim) * 10) / 10;
     text.textContent = solution;
-    num1 = null;
-    num2 = null;
-    operator = null;
-    solution = null;
+    clear("clear");
 }
 
-// called by clear button: sets all variable values to null and clears
-// screen text
-function clear(){
+// called by clear button or solution button: sets all variables
+// to null and, if not called by solution, erases display text
+function clear(condition){
     num1 = null;
     num2 = null;
+    interim = null;
     operator = null;
     solution = null;
-    text.textContent = "";
+    if (!condition){
+        text.textContent = "";
+    }
 }
 
 // math functions: rounds the operation of the two numbers and places
 // into the solution variable. It then makes num1 equal to solution
 function add(){
-    solution = Math.round((num1 + num2) * 10) / 10;
-    num1 = solution;
+    interim = num1 + num2;
+    num1 = interim;
 }
 function subtract(){
-    solution = Math.round((num1 - num2) * 10) / 10;
-    num1 = solution;
+    interim = num1 - num2;
+    num1 = interim;
 }
 function multiply(){
-    solution = Math.round((num1 * num2) * 10) / 10;
-    num1 = solution;
+    interim = num1 * num2;
+    num1 = interim;
 }
 function divide(){
-    solution = Math.round((num1 / num2) * 10) / 10;
-    num1 = solution;
+    interim = num1 / num2;
+    num1 = interim;
 }
