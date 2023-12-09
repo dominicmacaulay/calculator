@@ -4,6 +4,29 @@ let operator; // operator value definitions = add: 1, subtract: 2, multiply: 3, 
 let interim;
 let solution;
 const text = document.querySelector('#screen');
+const nums = document.querySelectorAll('.nums');
+const operators = document.querySelectorAll('.operators');
+const submitBtn = document.querySelector('#submit');
+const clearBtn = document.querySelector('#clear');
+
+// assign event listeners to the buttons that, when clicked, call their functions with
+// each buttons value as a parameter
+nums.forEach((elem) => {
+    elem.addEventListener('click', () => {
+        buttonPress(elem.value);
+    });
+});
+operators.forEach((elem) => {
+    elem.addEventListener('click', () => {
+        operatorCall(elem.value);
+    })
+})
+submitBtn.addEventListener('click',() => {
+    solutionButton();
+})
+clearBtn.addEventListener('click', () => {
+    clear();
+})
 
 clear();
 
@@ -11,7 +34,7 @@ clear();
 // corresponding operator function and replaces let operator
 // with new operator value
 function operatorCall(value){
-    if(!operator == null){
+    if(operator !== null){
         if(operator == 1){
             add();
         } else if(operator == 2){
@@ -32,8 +55,10 @@ function buttonPress(value){
     text.textContent = value;
     if(num1 == null){
         num1 = value;
+        console.log(num1)
     } else{
         num2 = value;
+        console.log(num2)
     }
 }
 
@@ -41,6 +66,7 @@ function buttonPress(value){
 // solution. Displays solution in the screen and calls the clear
 // function to reset variables
 function solutionButton(){
+    operatorCall();
     solution = Math.round((interim) * 10) / 10;
     text.textContent = solution;
     clear("clear");
@@ -62,18 +88,27 @@ function clear(condition){
 // math functions: rounds the operation of the two numbers and places
 // into the solution variable. It then makes num1 equal to solution
 function add(){
-    interim = num1 + num2;
+    interim = parseFloat(num1) + parseFloat(num2);
     num1 = interim;
+    console.log('interim: ' + interim);
 }
 function subtract(){
-    interim = num1 - num2;
+    interim = parseFloat(num1) - parseFloat(num2);
     num1 = interim;
+    console.log('interim: ' + interim);
 }
 function multiply(){
-    interim = num1 * num2;
-    num1 = interim;
+    if (num1 != 0 && num2 != 0){
+        interim = parseFloat(num1) * parseFloat(num2);
+        num1 = interim;
+        console.log('interim: ' + interim);
+    } else{
+        clear();
+        text.textContent = 'Nice try buddy';
+    }
 }
 function divide(){
-    interim = num1 / num2;
+    interim = parseFloat(num1) / parseFloat(num2);
     num1 = interim;
+    console.log('interim: ' + interim);
 }
