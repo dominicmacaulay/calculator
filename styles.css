@@ -1,0 +1,64 @@
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#calcBox{
+    display: flex;
+    align-items: center;
+    width: 700px;
+    height: 1000px;
+    flex-direction: column;
+    border: 2px solid black;
+}
+#keypad, #numBox, #operatorBox, #submit{
+    display: flex;
+    width: 100%;
+    height: auto;
+}
+#keypad{
+    height: 66.6667%;
+}
+#screen{
+    width: 99%;
+    height: 16.66667%;
+    background-color: black;
+    color: white;
+    font-size: 150px;
+    text-align: right;
+    justify-content: center;
+    padding: 5px;
+    padding-top: 0px;
+    margin: 0px;
+}
+#numBox{
+    flex-wrap: wrap;
+    width: 75%
+
+}
+.nums, .operators, #submit{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 25%;
+    width: 33.3333333333333%;
+    font-size: 150px;
+    font-weight: 900;
+    padding: 0px;
+}
+#zero{
+    width: 100%;
+}
+#operatorBox{
+    width: 25%;
+    flex-direction: column;
+}
+.operators{
+    width: 100%;
+    background-color: rgb(53, 188, 188);
+}
+#submit{
+    height: 16.6667%;
+    width: 100%;
+    background-color: rgb(47, 172, 47);
+}
